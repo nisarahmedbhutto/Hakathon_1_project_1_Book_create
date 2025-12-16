@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- Simple background -->
+  <rect width="800" height="400" fill="#e0f2fe"/>
+
+  <!-- Simple neural network lines -->
+  <line x1="100" y1="100" x2="200" y2="150" stroke="#4f46e5" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="150" x2="300" y2="120" stroke="#4f46e5" stroke-width="1" opacity="0.5"/>
+  <line x1="150" y1="200" x2="250" y2="180" stroke="#4f46e5" stroke-width="1" opacity="0.5"/>
+  <line x1="250" y1="180" x2="350" y2="220" stroke="#4f46e5" stroke-width="1" opacity="0.5"/>
+
+  <!-- Humanoid robot -->
+  <!-- Head -->
+  <circle cx="550" cy="120" r="25" fill="#93c5fd" stroke="#3730a3" stroke-width="2"/>
+  <!-- Body -->
+  <rect x="530" y="150" width="40" height="70" rx="5" fill="#bfdbfe" stroke="#3730a3" stroke-width="2"/>
+  <!-- Arms -->
+  <line x1="530" y1="160" x2="500" y2="180" stroke="#3730a3" stroke-width="3"/>
+  <line x1="570" y1="160" x2="600" y2="180" stroke="#3730a3" stroke-width="3"/>
+  <!-- Legs -->
+  <line x1="540" y1="220" x2="530" y2="260" stroke="#3730a3" stroke-width="3"/>
+  <line x1="560" y1="220" x2="570" y2="260" stroke="#3730a3" stroke-width="3"/>
+
+  <!-- Simple AI elements -->
+  <circle cx="480" cy="80" r="6" fill="#7e22ce"/>
+  <circle cx="620" cy="100" r="5" fill="#7e22ce"/>
+  <circle cx="500" cy="250" r="4" fill="#7e22ce"/>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f0f9ff"/>
+
+  <!-- Robot -->
+  <g transform="translate(550, 180)">
+    <!-- Head -->
+    <rect x="-40" y="-60" width="80" height="70" rx="10" fill="#e2e8f0" stroke="#4f46e5" stroke-width="3"/>
+
+    <!-- Eyes -->
+    <circle cx="-20" cy="-40" r="8" fill="#7e22ce"/>
+    <circle cx="20" cy="-40" r="8" fill="#7e22ce"/>
+    <circle cx="-20" cy="-40" r="4" fill="#ffffff"/>
+    <circle cx="20" cy="-40" r="4" fill="#ffffff"/>
+
+    <!-- Mouth -->
+    <rect x="-15" y="-15" width="30" height="5" rx="2" fill="#7e22ce"/>
+
+    <!-- Body -->
+    <rect x="-30" y="10" width="60" height="80" rx="5" fill="#bfdbfe" stroke="#4f46e5" stroke-width="3"/>
+
+    <!-- Arms -->
+    <line x1="-30" y1="20" x2="-70" y2="40" stroke="#4f46e5" stroke-width="6" stroke-linecap="round"/>
+    <line x1="30" y1="20" x2="70" y2="40" stroke="#4f46e5" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Legs -->
+    <line x1="-20" y1="90" x2="-20" y2="140" stroke="#4f46e5" stroke-width="6" stroke-linecap="round"/>
+    <line x1="20" y1="90" x2="20" y2="140" stroke="#4f46e5" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Chest panel -->
+    <rect x="-15" y="25" width="30" height="30" rx="3" fill="#4f46e5" opacity="0.3"/>
+  </g>
+
+  <!-- Decorative elements -->
+  <g fill="#7e22ce" opacity="0.6">
+    <circle cx="350" cy="80" r="6"/>
+    <circle cx="650" cy="70" r="5"/>
+    <circle cx="350" cy="250" r="5"/>
+    <circle cx="650" cy="250" r="6"/>
+    <circle cx="700" cy="150" r="4"/>
+  </g>
+</svg>

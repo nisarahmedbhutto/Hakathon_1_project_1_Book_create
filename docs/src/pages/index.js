@@ -25,13 +25,6 @@ function HomepageHeader() {
               </Link>
             </div>
           </div>
-          <div className={styles.heroImage}>
-            <img
-              src="/img/ai-humanoid-robotics.svg"
-              alt="AI and Humanoid Robotics"
-              className={styles.heroImageContent}
-            />
-          </div>
         </div>
       </div>
     </header>
