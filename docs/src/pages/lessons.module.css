@@ -1,0 +1,130 @@
+.main {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.lessonList h2 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.lessonGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lessonCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.lessonCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 8px var(--ifm-color-emphasis-200);
+}
+
+.lessonCard.selected {
+  border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+.lessonCard h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.description {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.lessonMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.difficulty {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ifm-global-radius);
+  font-weight: bold;
+}
+
+.difficulty.beginner {
+  background-color: var(--ifm-color-success-lightest);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.difficulty.intermediate {
+  background-color: var(--ifm-color-warning-lightest);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.difficulty.advanced {
+  background-color: var(--ifm-color-danger-lightest);
+  color: var(--ifm-color-danger-contrast-foreground);
+}
+
+.duration {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.objectives h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.objectives ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.lessonDetail {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+@media (max-width: 996px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .lessonDetail {
+    grid-column: 1;
+  }
+}

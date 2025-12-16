@@ -1,0 +1,404 @@
+.main {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  color: var(--ifm-color-emphasis-900);
+  padding: 3rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: var(--ifm-global-radius);
+  text-align: center;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.heroContent h1 {
+  color: var(--ifm-heading-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.section h3 {
+  color: var(--ifm-color-primary-dark);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.section h4 {
+  color: var(--ifm-color-primary-darker);
+  margin-bottom: 0.75rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--ifm-global-radius);
+  transition: all var(--ifm-transition-fast) ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.button:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--ifm-color-emphasis-300);
+  text-decoration: none;
+  color: white;
+}
+
+/* Chat page specific styles */
+.chatContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.chatInterface {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+}
+
+.chatHeader h2 {
+  color: var(--ifm-color-primary);
+  margin-top: 0;
+}
+
+.chatMessages {
+  background: white;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  min-height: 300px;
+  margin-bottom: 1.5rem;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.botMessage {
+  background: var(--ifm-color-primary-lightest);
+  padding: 1rem;
+  border-radius: var(--ifm-global-radius);
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+.messageInput {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.messageInputField {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  font-size: 1rem;
+}
+
+.sendButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--ifm-global-radius);
+  cursor: pointer;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.sendButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.suggestedQuestions {
+  margin-top: 1.5rem;
+}
+
+.questionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.questionCard {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1rem;
+}
+
+.questionLink {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.questionLink:hover {
+  text-decoration: underline;
+}
+
+.chatInfo {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  align-self: flex-start;
+}
+
+.chatInfo ul {
+  padding-left: 1.5rem;
+}
+
+.disclaimer {
+  background: var(--ifm-color-warning-lightest);
+  border-left: 3px solid var(--ifm-color-warning);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 0 var(--ifm-global-radius) var(--ifm-global-radius) 0;
+}
+
+/* Contact page specific styles */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contactInfo {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+}
+
+.contactMethod {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.contactMethod:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contactMethod h3 {
+  color: var(--ifm-color-primary);
+  margin-top: 0;
+}
+
+.contactForm {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: var(--ifm-font-weight-semibold);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--ifm-global-radius);
+  font-size: 1rem;
+  font-weight: var(--ifm-font-weight-semibold);
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.additionalInfo {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+}
+
+.additionalInfo ul {
+  padding-left: 1.5rem;
+}
+
+/* About page specific styles */
+.aboutSections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.techCard,
+.teamCard {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.techCard h4,
+.teamCard h4 {
+  color: var(--ifm-color-primary);
+  margin-top: 0;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Book page specific styles */
+.bookSections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.section {
+  background: white;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.section:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px var(--ifm-color-emphasis-200);
+  transform: translateY(-2px);
+}
+
+.section h2 {
+  color: var(--ifm-color-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* Responsive design */
+@media (max-width: 996px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .chatContainer,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .cta {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .questionsGrid,
+  .techGrid,
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .heroContent h1 {
+    font-size: 1.75rem;
+  }
+}
