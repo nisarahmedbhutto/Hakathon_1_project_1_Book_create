@@ -1,18 +1,8 @@
 {
-  "builds": [
-    {
-      "src": "docs/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build",
-        "buildCommand": "cd docs && npm install && npm run build"
-      }
-    }
-  ],
+  "rootDirectory": "docs",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
