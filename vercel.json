@@ -1,0 +1,6 @@
+{
+  "root": "docs",
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build",
+  "devCommand": "npm start"
+}
