@@ -1,0 +1,397 @@
+openapi: 3.0.0
+info:
+  title: Living Book System - Content API
+  version: 1.0.0
+  description: API for managing book content in the Living Book System for Physical AI & Humanoid Robotics
+
+paths:
+  /api/v1/content:
+    get:
+      summary: List content items
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [draft, in_review, approved, published, deprecated]
+        - name: content_type
+          in: query
+          schema:
+            type: string
+            enum: [chapter, lesson, article]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of content items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Content'
+                  total:
+                    type: integer
+    post:
+      summary: Create new content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentCreate'
+      responses:
+        '201':
+          description: Content created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+
+  /api/v1/content/{id}:
+    get:
+      summary: Get content by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '404':
+          description: Content not found
+    put:
+      summary: Update content
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentUpdate'
+      responses:
+        '200':
+          description: Content updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '404':
+          description: Content not found
+    delete:
+      summary: Delete content
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Content deleted successfully
+
+  /api/v1/content/{id}/publish:
+    post:
+      summary: Publish content (move to published status)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+
+  /api/v1/chapters:
+    get:
+      summary: List chapters
+      responses:
+        '200':
+          description: List of chapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chapter'
+    post:
+      summary: Create new chapter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChapterCreate'
+      responses:
+        '201':
+          description: Chapter created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chapter'
+
+  /api/v1/lessons:
+    get:
+      summary: List lessons
+      responses:
+        '200':
+          description: List of lessons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lesson'
+    post:
+      summary: Create new lesson
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LessonCreate'
+      responses:
+        '201':
+          description: Lesson created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lesson'
+
+components:
+  schemas:
+    Content:
+      type: object
+      required:
+        - id
+        - title
+        - content_type
+        - body
+        - status
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        title:
+          type: string
+          description: Title of the content
+          maxLength: 200
+        slug:
+          type: string
+          description: URL-friendly identifier
+        content_type:
+          type: string
+          enum: [chapter, lesson, article]
+        body:
+          type: string
+          description: Content in Markdown format
+        metadata:
+          type: object
+          description: Additional metadata
+        version:
+          type: integer
+          description: Version number
+          default: 1
+        status:
+          type: string
+          enum: [draft, in_review, approved, published, deprecated]
+        author:
+          type: string
+          description: Author identifier
+        review_status:
+          type: object
+          description: Review information
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    ContentCreate:
+      type: object
+      required:
+        - title
+        - content_type
+        - body
+      properties:
+        title:
+          type: string
+          maxLength: 200
+        content_type:
+          type: string
+          enum: [chapter, lesson, article]
+        body:
+          type: string
+        metadata:
+          type: object
+        author:
+          type: string
+
+    ContentUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 200
+        body:
+          type: string
+        metadata:
+          type: object
+        status:
+          type: string
+          enum: [draft, in_review, approved, published, deprecated]
+
+    Chapter:
+      type: object
+      required:
+        - id
+        - title
+        - slug
+        - order
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+        description:
+          type: string
+        order:
+          type: integer
+        lessons:
+          type: array
+          items:
+            type: string
+        difficulty_level:
+          type: string
+          enum: [beginner, intermediate, advanced]
+        prerequisites:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    ChapterCreate:
+      type: object
+      required:
+        - title
+        - order
+      properties:
+        title:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+        order:
+          type: integer
+        difficulty_level:
+          type: string
+          enum: [beginner, intermediate, advanced]
+
+    Lesson:
+      type: object
+      required:
+        - id
+        - title
+        - chapter_id
+        - content_id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+        chapter_id:
+          type: string
+        content_id:
+          type: string
+        learning_objectives:
+          type: array
+          items:
+            type: string
+        estimated_duration:
+          type: integer
+        difficulty_level:
+          type: string
+          enum: [beginner, intermediate, advanced]
+        prerequisites:
+          type: array
+          items:
+            type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    LessonCreate:
+      type: object
+      required:
+        - title
+        - chapter_id
+        - content_id
+      properties:
+        title:
+          type: string
+          maxLength: 100
+        chapter_id:
+          type: string
+        content_id:
+          type: string
+        learning_objectives:
+          type: array
+          items:
+            type: string
+        estimated_duration:
+          type: integer
+        difficulty_level:
+          type: string
+          enum: [beginner, intermediate, advanced]

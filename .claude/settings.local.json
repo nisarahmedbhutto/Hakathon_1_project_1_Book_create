@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Remove-Item -Path ''E:\\hakathon\\Physical-AI-Humanoid-Robotics\\docs\\*'' -Recurse -Force -ErrorAction SilentlyContinue\")"
+    ]
+  }
+}

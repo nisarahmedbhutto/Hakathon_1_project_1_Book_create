@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info:
+  title: Living Book System - Agent API
+  version: 1.0.0
+  description: API for managing AI agents in the Living Book System for Physical AI & Humanoid Robotics
+
+paths:
+  /api/v1/agents:
+    get:
+      summary: List AI agents
+      responses:
+        '200':
+          description: List of AI agents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agent'
+    post:
+      summary: Create new AI agent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreate'
+      responses:
+        '201':
+          description: Agent created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+
+  /api/v1/agents/{id}:
+    get:
+      summary: Get agent by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '404':
+          description: Agent not found
+    put:
+      summary: Update agent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentUpdate'
+      responses:
+        '200':
+          description: Agent updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '404':
+          description: Agent not found
+    delete:
+      summary: Delete agent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Agent deleted successfully
+
+  /api/v1/agents/{id}/run:
+    post:
+      summary: Execute agent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parameters:
+                  type: object
+                  description: Execution parameters
+      responses:
+        '200':
+          description: Agent executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: Execution result
+                  status:
+                    type: string
+                    enum: [success, error]
+                  execution_time:
+                    type: number
+                    description: Execution time in seconds
+
+  /api/v1/agents/{id}/memory:
+    get:
+      summary: Get agent memory state
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Agent memory state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  memory_state:
+                    type: object
+                    description: Current memory state
+    put:
+      summary: Update agent memory state
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memory_state:
+                  type: object
+                  description: New memory state
+      responses:
+        '200':
+          description: Memory state updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  memory_state:
+                    type: object
+                    description: Updated memory state
+
+components:
+  schemas:
+    Agent:
+      type: object
+      required:
+        - id
+        - name
+        - type
+        - status
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Agent name
+          maxLength: 100
+        type:
+          type: string
+          enum: [content_generator, reviewer, ethics_checker]
+        configuration:
+          type: object
+          description: Agent-specific configuration
+        memory_state:
+          type: object
+          description: Persistent memory state
+        last_run:
+          type: string
+          format: date-time
+          description: Last execution timestamp
+        status:
+          type: string
+          enum: [active, paused, error]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    AgentCreate:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        type:
+          type: string
+          enum: [content_generator, reviewer, ethics_checker]
+        configuration:
+          type: object
+        memory_state:
+          type: object
+
+    AgentUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        type:
+          type: string
+          enum: [content_generator, reviewer, ethics_checker]
+        configuration:
+          type: object
+        status:
+          type: string
+          enum: [active, paused, error]
